@@ -1,0 +1,77 @@
+train trips used: 78 (of 80 after label-QC); student-test trips: 10
+fit rows 406913 positives 60573  student-test rows 138120
+
+=== LogisticRegression (Linear / probabilistic)  fit rows 406913
+  fold 0: macroF1=0.9062 top1=0.8732 logloss=0.1494 (1s)
+  fold 1: macroF1=0.9050 top1=0.8494 logloss=0.1273 (1s)
+  fold 2: macroF1=0.9081 top1=0.8880 logloss=0.1090 (1s)
+  fold 3: macroF1=0.9265 top1=0.9106 logloss=0.1079 (1s)
+  fold 4: macroF1=0.9045 top1=0.8584 logloss=0.1526 (1s)
+  CV macroF1 0.9101±0.0093  CV top1 0.8759 | train top1 0.8755 | TEST top1 0.8689 macroF1 0.9099 logloss 0.1178 cont 0.9681 inf 0.0s fit 1s
+
+=== GaussianNB (Probabilistic (generative))  fit rows 406913
+  fold 0: macroF1=0.8547 top1=0.8540 logloss=0.5492 (0s)
+  fold 1: macroF1=0.8358 top1=0.8249 logloss=0.4971 (0s)
+  fold 2: macroF1=0.8301 top1=0.8635 logloss=0.4233 (0s)
+  fold 3: macroF1=0.8629 top1=0.8960 logloss=0.4336 (0s)
+  fold 4: macroF1=0.8333 top1=0.8198 logloss=0.6470 (0s)
+  CV macroF1 0.8434±0.0145  CV top1 0.8516 | train top1 0.8520 | TEST top1 0.8373 macroF1 0.8377 logloss 0.5049 cont 0.9640 inf 0.0s fit 0s
+
+=== KNN (Instance-based)  fit rows 135572
+  fold 0: macroF1=0.9070 top1=0.8627 logloss=0.1724 (0s)
+  fold 1: macroF1=0.9079 top1=0.8424 logloss=0.1320 (0s)
+  fold 2: macroF1=0.9091 top1=0.8729 logloss=0.1076 (0s)
+  fold 3: macroF1=0.9357 top1=0.9058 logloss=0.1120 (0s)
+  fold 4: macroF1=0.9032 top1=0.8473 logloss=0.1819 (0s)
+  CV macroF1 0.9126±0.0131  CV top1 0.8662 | train top1 0.9912 | TEST top1 0.8674 macroF1 0.9141 logloss 0.1276 cont 0.9661 inf 32.7s fit 0s
+
+=== DecisionTree (Tree-based)  fit rows 406913
+  fold 0: macroF1=0.9239 top1=0.8828 logloss=0.1363 (5s)
+  fold 1: macroF1=0.9157 top1=0.8469 logloss=0.1059 (5s)
+  fold 2: macroF1=0.9351 top1=0.8962 logloss=0.0717 (5s)
+  fold 3: macroF1=0.9534 top1=0.9250 logloss=0.0692 (5s)
+  fold 4: macroF1=0.9092 top1=0.8549 logloss=0.1405 (5s)
+  CV macroF1 0.9274±0.0174  CV top1 0.8812 | train top1 0.8921 | TEST top1 0.8910 macroF1 0.9324 logloss 0.0864 cont 0.9702 inf 0.0s fit 6s
+
+=== RandomForest (Bagging ensemble)  fit rows 406913
+  fold 0: macroF1=0.9238 top1=0.8795 logloss=0.1065 (26s)
+  fold 1: macroF1=0.9166 top1=0.8581 logloss=0.0954 (26s)
+  fold 2: macroF1=0.9341 top1=0.8987 logloss=0.0663 (27s)
+  fold 3: macroF1=0.9494 top1=0.9261 logloss=0.0658 (26s)
+  fold 4: macroF1=0.9166 top1=0.8607 logloss=0.1158 (26s)
+  CV macroF1 0.9281±0.0139  CV top1 0.8846 | train top1 0.9026 | TEST top1 0.8850 macroF1 0.9262 logloss 0.0817 cont 0.9713 inf 0.4s fit 33s
+
+=== HistGradientBoosting (Boosting (sklearn))  fit rows 406913
+  fold 0: macroF1=0.9270 top1=0.8817 logloss=0.1080 (4s)
+  fold 1: macroF1=0.9222 top1=0.8596 logloss=0.0922 (4s)
+  fold 2: macroF1=0.9382 top1=0.9025 logloss=0.0638 (5s)
+  fold 3: macroF1=0.9538 top1=0.9236 logloss=0.0641 (4s)
+  fold 4: macroF1=0.9183 top1=0.8629 logloss=0.1151 (2s)
+  CV macroF1 0.9319±0.0143  CV top1 0.8861 | train top1 0.9114 | TEST top1 0.8938 macroF1 0.9315 logloss 0.0825 cont 0.9712 inf 0.3s fit 4s
+
+=== LightGBM (Boosting (leaf-wise GBDT))  fit rows 406913
+  fold 0: macroF1=0.9266 top1=0.8796 logloss=0.1068 (5s)
+  fold 1: macroF1=0.9248 top1=0.8626 logloss=0.0885 (5s)
+  fold 2: macroF1=0.9390 top1=0.9029 logloss=0.0621 (4s)
+  fold 3: macroF1=0.9563 top1=0.9289 logloss=0.0608 (5s)
+  fold 4: macroF1=0.9191 top1=0.8644 logloss=0.1096 (5s)
+  CV macroF1 0.9332±0.0148  CV top1 0.8877 | train top1 0.9211 | TEST top1 0.8979 macroF1 0.9348 logloss 0.0760 cont 0.9746 inf 0.9s fit 6s
+
+=== MLP (Neural network)  fit rows 406913
+/usr/local/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (40) reached and the optimization hasn't converged yet.
+  warnings.warn(
+  fold 0: macroF1=0.9244 top1=0.8786 logloss=0.1252 (15s)
+/usr/local/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (40) reached and the optimization hasn't converged yet.
+  warnings.warn(
+  fold 1: macroF1=0.9166 top1=0.8491 logloss=0.1058 (15s)
+/usr/local/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (40) reached and the optimization hasn't converged yet.
+  warnings.warn(
+  fold 2: macroF1=0.9333 top1=0.8946 logloss=0.0713 (15s)
+/usr/local/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (40) reached and the optimization hasn't converged yet.
+  warnings.warn(
+  fold 3: macroF1=0.9493 top1=0.9163 logloss=0.0750 (15s)
+  fold 4: macroF1=0.9163 top1=0.8585 logloss=0.1222 (14s)
+/usr/local/lib/python3.13/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (40) reached and the optimization hasn't converged yet.
+  warnings.warn(
+  CV macroF1 0.9280±0.0138  CV top1 0.8794 | train top1 0.9062 | TEST top1 0.8891 macroF1 0.9300 logloss 0.0826 cont 0.9757 inf 0.0s fit 19s
+saved /home/claude/pathsnap/results/model_comparison.csv

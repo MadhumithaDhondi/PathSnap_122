@@ -1,0 +1,11 @@
+train trips used: 78 (of 80 after label-QC); student-test trips: 10
+fit rows 406913 positives 60573  student-test rows 138120
+
+=== DecisionTree (Tree-based)  fit rows 406913
+  fold 0: macroF1=0.9239 top1=0.8828 logloss=0.1363 (5s)
+  fold 1: macroF1=0.9157 top1=0.8469 logloss=0.1059 (5s)
+  fold 2: macroF1=0.9351 top1=0.8962 logloss=0.0717 (5s)
+  fold 3: macroF1=0.9534 top1=0.9250 logloss=0.0692 (5s)
+  fold 4: macroF1=0.9092 top1=0.8549 logloss=0.1405 (5s)
+  CV macroF1 0.9274±0.0174  CV top1 0.8812 | train top1 0.8921 | TEST top1 0.8910 macroF1 0.9324 logloss 0.0864 cont 0.9702 inf 0.0s fit 6s
+saved /home/claude/pathsnap/results/model_comparison_partial.csv
