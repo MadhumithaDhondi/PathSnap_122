@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PathSnap – Evaluator UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1d2330; --muted:#6b7385; --line:#dfe3ea; --accent:#2f5bd8; --hmm:#d62728; --clf:#ff9f1c; --gps:#1f77b4; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:14px 22px; background:#fff; border-bottom:1px solid var(--line); display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; }
+  header label { font-size:13px; color:var(--muted); }
+  header input { padding:6px 8px; border:1px solid var(--line); border-radius:6px; width:260px; font-size:13px; }
+  button { cursor:pointer; border:1px solid var(--line); background:#fff; border-radius:8px; padding:7px 12px; font-size:13px; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button.trip { margin:3px; }
+  button.trip.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  main { display:grid; grid-template-columns: 340px 1fr; gap:14px; padding:14px; height: calc(100vh - 66px); }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; overflow:auto; }
+  .panel h2 { font-size:14px; margin:0 0 8px; }
+  #map { border-radius:12px; border:1px solid var(--line); height:100%; min-height:480px; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th, td { border-bottom:1px solid var(--line); padding:6px 4px; text-align:right; }
+  th:first-child, td:first-child { text-align:left; }
+  .muted { color:var(--muted); font-size:12px; }
+  .legend span { display:inline-block; width:14px; height:4px; margin-right:6px; vertical-align:middle; }
+  #status { font-size:12px; color:var(--muted); margin-top:8px; min-height:18px; }
+  .err { color:#b00020 !important; }
+  .good { color:#1b7f3b; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PathSnap evaluator</h1>
+  <label>API address <input id="api" value="http://localhost:8000"></label>
+  <button class="primary" id="load">Load evaluation trips</button>
+  <span class="muted">The UI only sends a trip ID. Reference labels never leave the API laptop.</span>
+</header>
+<main>
+  <div>
+    <div class="panel">
+      <h2>1 · Choose a trip</h2>
+      <div id="trips" class="muted">Press “Load evaluation trips”.</div>
+      <div id="status"></div>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h2>2 · Results <span id="tripname" class="muted"></span></h2>
+      <table id="metrics">
+        <thead><tr><th>Metric</th><th>Classifier only</th><th>+ HMM/Viterbi</th></tr></thead>
+        <tbody><tr><td colspan="3" class="muted">No trip selected yet.</td></tr></tbody>
+      </table>
+      <p class="muted" id="timing"></p>
+    </div>
+    <div class="panel" style="margin-top:14px">
+      <h2>Map layers</h2>
+      <div class="legend">
+        <div><span style="background:var(--gps)"></span>Raw GPS observations</div>
+        <div><span style="background:var(--hmm)"></span>Predicted route (classifier + HMM)</div>
+        <div><span style="background:var(--clf)"></span>Predicted route (classifier only)</div>
+      </div>
+      <p class="muted">Use the layer control on the map to toggle layers.</p>
+    </div>
+  </div>
+  <div id="map"></div>
+</main>
+<script src="vendor/leaflet/leaflet.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const map = L.map('map').setView([20, 0], 2);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap contributors'}).addTo(map);
+let layers = {}, ctl = null, current = null;
+
+const base = () => $('api').value.replace(/\/+$/, '');
+const setStatus = (t, err=false) => { $('status').textContent = t; $('status').className = err ? 'err' : ''; };
+
+async function loadTrips() {
+  try {
+    setStatus('Contacting API…');
+    const r = await fetch(base() + '/trips'); if (!r.ok) throw new Error('HTTP ' + r.status);
+    const ids = (await r.json()).trips;
+    $('trips').innerHTML = '';
+    ids.forEach(id => { const b = document.createElement('button'); b.className = 'trip'; b.textContent = id; b.onclick = () => run(id, b); $('trips').appendChild(b); });
+    setStatus(ids.length + ' trips available.');
+  } catch (e) { setStatus('Cannot reach API: ' + e.message, true); }
+}
+
+const pct = v => (100 * v).toFixed(1) + '%';
+function render(d) {
+  const a = d.metrics.classifier_only, b = d.metrics.classifier_plus_hmm;
+  const row = (name, k, f=pct) => `<tr><td>${name}</td><td>${f(a[k])}</td><td class="${b[k] >= a[k] ? 'good' : ''}">${f(b[k])}</td></tr>`;
+  $('metrics').querySelector('tbody').innerHTML =
+    row('Top-1 accuracy (per GPS fix)', 'top1_acc') + row('Macro F1 (arc classes)', 'obs_macro_f1') +
+    row('Route continuity', 'route_continuity') + row('Route precision', 'route_precision') +
+    row('Route recall', 'route_recall') + row('Route F1', 'route_f1') +
+    `<tr><td>Arcs on predicted route</td><td>${a.n_pred_arcs}</td><td>${b.n_pred_arcs}</td></tr>`;
+  $('tripname').textContent = '· trip ' + d.trip_id + ' (' + d.n_obs + ' fixes)';
+  const t = d.timing_seconds;
+  $('timing').textContent = `Pipeline ${t.total_s}s (features ${t.features_s}s, model ${t.model_s}s, HMM ${t.hmm_s}s) · request ${t.request_total_s}s`;
+
+  Object.values(layers).forEach(l => map.removeLayer(l)); if (ctl) map.removeControl(ctl);
+  const gps = L.layerGroup(d.gps.map(p => L.circleMarker(p, {radius: 2.5, color: '#1f77b4', weight: 1, fillOpacity: .8})));
+  const hmm = L.layerGroup(d.predicted_route_hmm.map(s => L.polyline(s, {color: '#d62728', weight: 5, opacity: .85})));
+  const clf = L.layerGroup(d.predicted_route_classifier_only.map(s => L.polyline(s, {color: '#ff9f1c', weight: 3, opacity: .9, dashArray: '6 6'})));
+  layers = {gps, hmm, clf}; gps.addTo(map); clf.addTo(map); hmm.addTo(map);
+  ctl = L.control.layers(null, {'Raw GPS': gps, 'Predicted route (HMM)': hmm, 'Predicted route (classifier only)': clf}, {collapsed: false}).addTo(map);
+  map.fitBounds(L.latLngBounds(d.gps).pad(0.1));
+}
+
+async function run(id, btn) {
+  document.querySelectorAll('button.trip').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+  setStatus('Running pipeline on API for trip ' + id + '…');
+  try {
+    const r = await fetch(base() + '/predict', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({trip_id: id})});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    render(await r.json()); setStatus('Done.');
+  } catch (e) { setStatus('Prediction failed: ' + e.message, true); }
+}
+$('load').onclick = loadTrips;
+</script>
+</body>
+</html>
