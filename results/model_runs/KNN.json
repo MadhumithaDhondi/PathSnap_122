@@ -1,0 +1,110 @@
+{
+ "summary": {
+  "model": "KNN",
+  "family": "Instance-based",
+  "cv_macro_f1_mean": 0.9125933172609271,
+  "cv_macro_f1_std": 0.013087789996575254,
+  "cv_top1_mean": 0.866233486694291,
+  "cv_top1_std": 0.025241135113023047,
+  "cv_logloss_mean": 0.14116668414043607,
+  "train_macro_f1": 1.0,
+  "train_top1": 0.9911756054515148,
+  "train_logloss": 1.0054615203819586e-06,
+  "test_top1": 0.8673799582463465,
+  "test_cand_macro_f1": 0.9141372860805468,
+  "test_obs_macro_f1": 0.7773922096172947,
+  "test_precision": 0.8641795865633075,
+  "test_recall": 0.839592050209205,
+  "test_logloss": 0.12764002152417342,
+  "test_cand_accuracy": 0.9595279467130032,
+  "test_route_continuity": 0.966073461807371,
+  "test_route_f1": 0.8714011268023345,
+  "fit_seconds": 0.0428156852722168,
+  "cv_fit_seconds_mean": 0.04282822608947754,
+  "inference_seconds": 32.72586154937744,
+  "inference_ms_per_obs": 1.7080303522639584,
+  "fit_rows": 135572
+ },
+ "params": {
+  "algorithm": "auto",
+  "leaf_size": 30,
+  "metric": "minkowski",
+  "metric_params": null,
+  "n_jobs": 2,
+  "n_neighbors": 25,
+  "p": 2,
+  "weights": "distance"
+ },
+ "confusion_matrix_student_test": [
+  [
+   116477,
+   2523
+  ],
+  [
+   3067,
+   16053
+  ]
+ ],
+ "cv_folds": [
+  {
+   "cand_accuracy": 0.946985115617567,
+   "cand_macro_f1": 0.9069908539167271,
+   "cand_precision": 0.8627151884942253,
+   "cand_recall": 0.8299210397596255,
+   "log_loss": 0.17237995074529414,
+   "top1_acc": 0.862698633955952,
+   "obs_macro_f1": 0.8061177894384346,
+   "model": "KNN",
+   "fold": 0,
+   "fit_seconds": 0.0394742488861084
+  },
+  {
+   "cand_accuracy": 0.9574603563338028,
+   "cand_macro_f1": 0.9079122465979985,
+   "cand_precision": 0.8906204344014804,
+   "cand_recall": 0.7954762940408874,
+   "log_loss": 0.1319654721324875,
+   "top1_acc": 0.8424459206268098,
+   "obs_macro_f1": 0.793123409393105,
+   "model": "KNN",
+   "fold": 1,
+   "fit_seconds": 0.041350603103637695
+  },
+  {
+   "cand_accuracy": 0.9632679144187876,
+   "cand_macro_f1": 0.9091421415446503,
+   "cand_precision": 0.8751685393258427,
+   "cand_recall": 0.8057308368676942,
+   "log_loss": 0.10764630193449351,
+   "top1_acc": 0.8728568477587275,
+   "obs_macro_f1": 0.8138882647048657,
+   "model": "KNN",
+   "fold": 2,
+   "fit_seconds": 0.04410147666931152
+  },
+  {
+   "cand_accuracy": 0.9681424163769039,
+   "cand_macro_f1": 0.9356722301983618,
+   "cand_precision": 0.9055158764305998,
+   "cand_recall": 0.8749480335910867,
+   "log_loss": 0.1119607553406343,
+   "top1_acc": 0.9058406788038553,
+   "obs_macro_f1": 0.8063998029992755,
+   "model": "KNN",
+   "fold": 3,
+   "fit_seconds": 0.044789791107177734
+  },
+  {
+   "cand_accuracy": 0.948249562855761,
+   "cand_macro_f1": 0.9032491140468977,
+   "cand_precision": 0.8540175019888624,
+   "cand_recall": 0.8211581121395242,
+   "log_loss": 0.1818809405492708,
+   "top1_acc": 0.8473253523261101,
+   "obs_macro_f1": 0.7116375236731197,
+   "model": "KNN",
+   "fold": 4,
+   "fit_seconds": 0.044425010681152344
+  }
+ ]
+}

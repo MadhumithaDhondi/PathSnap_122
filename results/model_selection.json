@@ -1,0 +1,62 @@
+{
+ "chosen_model": "LightGBM",
+ "rule": "highest mean group-CV candidate macro F1 on training trips",
+ "ranking": [
+  {
+   "model": "LightGBM",
+   "cv_macro_f1_mean": 0.933154024486754,
+   "cv_top1_mean": 0.8876915016920929,
+   "test_top1": 0.8978601252609604,
+   "test_logloss": 0.0759640738119047
+  },
+  {
+   "model": "HistGradientBoosting",
+   "cv_macro_f1_mean": 0.9318863100441528,
+   "cv_top1_mean": 0.886059432275102,
+   "test_top1": 0.8937891440501043,
+   "test_logloss": 0.0824850942924719
+  },
+  {
+   "model": "RandomForest",
+   "cv_macro_f1_mean": 0.9281005978004632,
+   "cv_top1_mean": 0.8846112338106703,
+   "test_top1": 0.8850208768267224,
+   "test_logloss": 0.0816546189423511
+  },
+  {
+   "model": "MLP",
+   "cv_macro_f1_mean": 0.927999927649724,
+   "cv_top1_mean": 0.8794188373164816,
+   "test_top1": 0.8890918580375783,
+   "test_logloss": 0.0825665482609565
+  },
+  {
+   "model": "DecisionTree",
+   "cv_macro_f1_mean": 0.9274439094485206,
+   "cv_top1_mean": 0.8811703366446297,
+   "test_top1": 0.8909707724425887,
+   "test_logloss": 0.0864138036969613
+  },
+  {
+   "model": "KNN",
+   "cv_macro_f1_mean": 0.9125933172609272,
+   "cv_top1_mean": 0.866233486694291,
+   "test_top1": 0.8673799582463465,
+   "test_logloss": 0.1276400215241734
+  },
+  {
+   "model": "LogisticRegression",
+   "cv_macro_f1_mean": 0.9100689568819352,
+   "cv_top1_mean": 0.8759396220755697,
+   "test_top1": 0.868945720250522,
+   "test_logloss": 0.1178439623406388
+  },
+  {
+   "model": "GaussianNB",
+   "cv_macro_f1_mean": 0.8433697881190014,
+   "cv_top1_mean": 0.8516410784908054,
+   "test_top1": 0.8373173277661795,
+   "test_logloss": 0.5049374956378422
+  }
+ ]
+}

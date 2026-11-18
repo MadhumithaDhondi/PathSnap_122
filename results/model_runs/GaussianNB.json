@@ -1,0 +1,104 @@
+{
+ "summary": {
+  "model": "GaussianNB",
+  "family": "Probabilistic (generative)",
+  "cv_macro_f1_mean": 0.8433697881190014,
+  "cv_macro_f1_std": 0.014497804682136423,
+  "cv_top1_mean": 0.8516410784908054,
+  "cv_top1_std": 0.030998665305307295,
+  "cv_logloss_mean": 0.5100266334001458,
+  "train_macro_f1": 0.8453834921040162,
+  "train_top1": 0.8519530674696035,
+  "train_logloss": 0.4985397936431224,
+  "test_top1": 0.8373173277661795,
+  "test_cand_macro_f1": 0.8376905695766224,
+  "test_obs_macro_f1": 0.737499993211631,
+  "test_precision": 0.6104732567908149,
+  "test_recall": 0.9121338912133892,
+  "test_logloss": 0.5049374956378422,
+  "test_cand_accuracy": 0.9072690414132638,
+  "test_route_continuity": 0.9640462132607676,
+  "test_route_f1": 0.8486891297300406,
+  "fit_seconds": 0.21414780616760254,
+  "cv_fit_seconds_mean": 0.15109057426452638,
+  "inference_seconds": 0.021463871002197266,
+  "inference_ms_per_obs": 0.00112024378925873,
+  "fit_rows": 406913
+ },
+ "params": {
+  "priors": null,
+  "var_smoothing": 1e-09
+ },
+ "confusion_matrix_student_test": [
+  [
+   107872,
+   11128
+  ],
+  [
+   1680,
+   17440
+  ]
+ ],
+ "cv_folds": [
+  {
+   "cand_accuracy": 0.9067090066452514,
+   "cand_macro_f1": 0.8546805298346546,
+   "cand_precision": 0.6816457068516912,
+   "cand_recall": 0.8786947103626581,
+   "log_loss": 0.5491577910116621,
+   "top1_acc": 0.8539866183440201,
+   "obs_macro_f1": 0.7938084873132344,
+   "model": "GaussianNB",
+   "fold": 0,
+   "fit_seconds": 0.150221586227417
+  },
+  {
+   "cand_accuracy": 0.9084920100410212,
+   "cand_macro_f1": 0.8358414371013974,
+   "cand_precision": 0.6269410427976265,
+   "cand_recall": 0.8640278381905176,
+   "log_loss": 0.49709589617367855,
+   "top1_acc": 0.8249020609776869,
+   "obs_macro_f1": 0.771801239473743,
+   "model": "GaussianNB",
+   "fold": 1,
+   "fit_seconds": 0.14878582954406738
+  },
+  {
+   "cand_accuracy": 0.916888894350706,
+   "cand_macro_f1": 0.8301295070948473,
+   "cand_precision": 0.6071428571428571,
+   "cand_recall": 0.8511430640322748,
+   "log_loss": 0.42330214771213504,
+   "top1_acc": 0.8634579632307374,
+   "obs_macro_f1": 0.7777593693379246,
+   "model": "GaussianNB",
+   "fold": 2,
+   "fit_seconds": 0.15180444717407227
+  },
+  {
+   "cand_accuracy": 0.9202703364513444,
+   "cand_macro_f1": 0.862865343063824,
+   "cand_precision": 0.6640880690270753,
+   "cand_recall": 0.9279121975555001,
+   "log_loss": 0.4335974085586703,
+   "top1_acc": 0.896037564873548,
+   "obs_macro_f1": 0.7698396806276249,
+   "model": "GaussianNB",
+   "fold": 3,
+   "fit_seconds": 0.15401315689086914
+  },
+  {
+   "cand_accuracy": 0.8944033136153379,
+   "cand_macro_f1": 0.8333321235002836,
+   "cand_precision": 0.6215337030716723,
+   "cand_recall": 0.8915321655320125,
+   "log_loss": 0.646979923544583,
+   "top1_acc": 0.8198211850280346,
+   "obs_macro_f1": 0.6755588903225573,
+   "model": "GaussianNB",
+   "fold": 4,
+   "fit_seconds": 0.15062785148620605
+  }
+ ]
+}
