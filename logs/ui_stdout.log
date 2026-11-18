@@ -1,0 +1,6 @@
+PathSnap UI on http://localhost:8080
+127.0.0.1 - - [18/Nov/2026 06:19:05] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 06:19:05] "GET /vendor/leaflet/leaflet.css HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 06:19:05] "GET /vendor/leaflet/leaflet.js HTTP/1.1" 200 -
+127.0.0.1 - - [18/Nov/2026 06:19:06] code 404, message File not found
+127.0.0.1 - - [18/Nov/2026 06:19:06] "GET /favicon.ico HTTP/1.1" 404 -

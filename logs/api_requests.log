@@ -1,0 +1,25 @@
+2026-11-18 06:18:51,143 | 127.0.0.1 GET /trips -> 200 (0.00s)
+2026-11-18 06:18:51,469 | predict trip=00000000 obs=2503 arcs(hmm)=177 top1 clf=0.9505 hmm=0.9824 pipeline=0.21s
+2026-11-18 06:18:51,483 | 127.0.0.1 POST /predict -> 200 (0.34s)
+2026-11-18 06:18:51,609 | predict trip=00000007 obs=1354 arcs(hmm)=122 top1 clf=0.9727 hmm=0.9948 pipeline=0.08s
+2026-11-18 06:18:51,616 | 127.0.0.1 POST /predict -> 200 (0.13s)
+2026-11-18 06:18:51,872 | predict trip=00000009 obs=1049 arcs(hmm)=369 top1 clf=0.878 hmm=0.9228 pipeline=0.19s
+2026-11-18 06:18:51,883 | 127.0.0.1 POST /predict -> 200 (0.26s)
+2026-11-18 06:18:52,282 | predict trip=00000040 obs=2995 arcs(hmm)=296 top1 clf=0.9496 hmm=0.9843 pipeline=0.24s
+2026-11-18 06:18:52,297 | 127.0.0.1 POST /predict -> 200 (0.41s)
+2026-11-18 06:18:52,361 | predict trip=00000052 obs=262 arcs(hmm)=82 top1 clf=0.9847 hmm=1.0 pipeline=0.04s
+2026-11-18 06:18:52,365 | 127.0.0.1 POST /predict -> 200 (0.06s)
+2026-11-18 06:18:53,491 | predict trip=00000056 obs=3958 arcs(hmm)=1168 top1 clf=0.9133 hmm=0.9669 pipeline=0.52s
+2026-11-18 06:18:53,529 | 127.0.0.1 POST /predict -> 200 (1.16s)
+2026-11-18 06:18:53,748 | predict trip=00000065 obs=768 arcs(hmm)=135 top1 clf=0.8542 hmm=0.8711 pipeline=0.17s
+2026-11-18 06:18:53,753 | 127.0.0.1 POST /predict -> 200 (0.21s)
+2026-11-18 06:18:54,530 | predict trip=00000076 obs=1486 arcs(hmm)=335 top1 clf=0.928 hmm=0.9812 pipeline=0.53s
+2026-11-18 06:18:54,540 | 127.0.0.1 POST /predict -> 200 (0.78s)
+2026-11-18 06:18:55,292 | predict trip=00000077 obs=3911 arcs(hmm)=258 top1 clf=0.7719 hmm=0.9264 pipeline=0.59s
+2026-11-18 06:18:55,314 | 127.0.0.1 POST /predict -> 200 (0.77s)
+2026-11-18 06:18:55,506 | predict trip=00000091 obs=874 arcs(hmm)=180 top1 clf=0.8924 hmm=0.9405 pipeline=0.14s
+2026-11-18 06:18:55,512 | 127.0.0.1 POST /predict -> 200 (0.18s)
+2026-11-18 06:19:06,410 | 127.0.0.1 GET /trips -> 200 (0.00s)
+2026-11-18 06:19:06,480 | 127.0.0.1 OPTIONS /predict -> 200 (0.00s)
+2026-11-18 06:19:06,726 | predict trip=00000009 obs=1049 arcs(hmm)=369 top1 clf=0.878 hmm=0.9228 pipeline=0.22s
+2026-11-18 06:19:06,739 | 127.0.0.1 POST /predict -> 200 (0.25s)
